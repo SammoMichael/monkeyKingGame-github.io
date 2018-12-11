@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyBcu3DjQ_O2q1WRgYkXRm75ZfiBVAp1VI4",
+        authDomain: "monkey-king-game.firebaseapp.com",
+        databaseURL: "https://monkey-king-game.firebaseio.com",
+        projectId: "monkey-king-game",
+        storageBucket: "",
+        messagingSenderId: "691583265310"
+      };
+      firebase.initializeApp(config);
+    </script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="icon" href="./img/monkey-king-big3.png" type="image/gif">
+    <meta charset="utf-8">
+    <title>Monkey King Game</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
+      crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/app.css">
+  </head>
+  <body>
+    <div id="health-bar" class="health-bar" data-total="1000" data-value="1000"></div>
+    <div id="bar" class="bar" style="width: 100%;"></div>
+    <!-- <div id="game-start-overlay">
+    </div> -->
+    <div id="game-start">
+      <button id="start">Start Game</button>
+      <div></div>
+      <span class="caption-span">
+      <img id='img' class='img' src="./img/monkey-king-big1.png" alt="bg" />Save the Fruit Flower Cave from an army of
+        evil monkeys!</span>
+    </div>
+    <div id="container">
+      <canvas id="gameCanvas" ></canvas>
+    </div>
+    <video id="video" class="video" autoplay muted loop id="myVideo">
+      <source src="https://media.giphy.com/media/13bGgH9VnEDsuA/giphy.mp4" type="video/mp4">
+    </video>
+    <div id="game-over-overlay"></div>
+    <div id="game-over">
+      <h1>GAME OVER</h1>
+      <button id="play-again">Play Again</button>
+    </div>
+    <div class="wrapper">
+      <div id="instructions">
+        <div>
+          move with <span >arrows</span> or <span >wasd</span>
+        </div>
+        <div>
+          shoot with <span >space</span>
+        </div>
+      </div>
+      <div id="health">
+      
+      </div>
+        <div id="score"></div>
+      </div>
+        <audio id="attack">
+          <source src="./audio/shoot_attack.mp3" type="audio/mp3">
+        </audio>
+        <audio id="ambush">
+          <source loop src="./audio/ambush.mp3" type="audio/mp3">
+        </audio>
+        <span id="links">
+          <a class="gitHub" href='https://github.com/SammoMichael'><i class="fab fa-github-alt"></i>Github</a></a>
+          <a classs="linkedIn" href='https://www.linkedin.com/in/samuelamichael/'><i class="fab fa-linkedin"></i>LinkedIn</a> 
+          <a class="bio" href=''><i class="fas fa-ghost"></i>Bio</a>
+        </span>
+        <script type="text/javascript" src="./js/resources.js"></script>
+        <script type="text/javascript" src="./js/input.js"></script>
+        <script type="text/javascript" src="./js/sprite.js"></script>
+        <script type="text/javascript" src="./js/app.js"></script>
+        <!-- <div id="joystick"> -->
+        <span id="circle" style="display:inline-block;width:fit-content;height:fit-content;">
+          <!-- <button id="up">UP</button>
+          <button id="down">DOWN</button>
+          <button id="left">LEFT</button>
+          <button id="right">RIGHT</button>
+          <button id="fire">FIRE</button> -->
+        </span>
+        <!-- </div id="joystick"> -->
+        <div id="circle2" style="display:block;"></div>
+        <div id="circle3" style="display:block;"></div>
+        <div id="circle4" style="display:block;"></div>
+        <div id="circle5" style="display:block;"></div>
+        <!-- <script> window.touch ? document.getElementById('controller').style="block" : null </script> -->
+        
+          
+      </body>
+</html>

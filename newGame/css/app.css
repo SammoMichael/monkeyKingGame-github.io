@@ -1,0 +1,272 @@
+.img {
+position: relative;
+    bottom: 60%;
+    right: 10%;
+}
+button {
+    cursor: pointer;
+}
+a {
+    text-decoration: none;
+    color: brown;
+}
+
+#circle:hover {
+    background-color: white;
+}
+#circle:before {
+    position: absolute;
+    cursor: pointer;
+    z-index: 10;
+    color: white;
+    display: block;
+    opacity: .5;
+  content: ' \25CF';
+  font-size: 200px;
+  right: 5%;
+  overflow: hidden;
+}
+#circle2:hover {
+    background-color: white;
+}
+#circle2:before {
+    position: absolute;
+    cursor: pointer;
+    z-index: 2;
+    color: white;
+    display: block;
+    opacity: .5;
+  content: ' \25CF';
+  font-size: 200px;
+  top: -10%;
+  overflow: hidden;
+
+}
+#circle3:hover {
+    background-color: white;
+}
+#circle3:before {
+    position: absolute;
+    cursor: pointer;
+    z-index: 2;
+    color: white;
+    display: block;
+    opacity: .5;
+  content: ' \25CF';
+  font-size: 200px;
+  top: 30%;
+  /* margin: 60px; */
+  overflow: hidden;
+
+}
+#circle4:hover {
+    background-color: white;
+}
+#circle4:before {
+    position: absolute;
+    cursor: pointer;
+    z-index: 2;
+    color: white;
+    display: block;
+    opacity: .5;
+  content: ' \25CF';
+  font-size: 200px;
+  top: 50%;
+  /* margin: 30px; */
+  overflow: hidden;
+
+}
+#circle5:hover {
+    background-color: white;
+}
+#circle5:before {
+    position: absolute;
+    cursor: pointer;
+    z-index: 2;
+    color: white;
+    display: block;
+    opacity: .5;
+  content: ' \25CF';
+  font-size: 200px;
+  top: 70%;
+  /* margin: 30px; */
+  overflow: hidden;
+
+}
+#links {
+    z-index: 1;
+    text-decoration: none;
+}
+#start {
+    top: 50px;
+    left: 10%;
+    position: relative;
+}
+#links {
+    left: 30%;
+    bottom: 10%;
+    position: absolute;
+    color: brown;
+    font-size: -webkit-xxx-large;
+    position: absolute;
+
+    color: brown;
+}
+.caption-span {
+    font-size: -webkit-xxx-large;
+    color: green;
+    position: relative;
+    bottom: 120%;
+    bottom: 150px;
+}
+#video {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+
+}
+html, body {
+    height: 100%;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    background-color: #151515;
+}
+
+canvas {
+    display: block;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+#health {
+    visibility:  hidden;
+    font-size: 50px;
+}
+
+.wrapper {
+    width: 512px;
+    margin: 0 auto;
+    margin-top: 2em;
+}
+
+#instructions {
+    float: left;
+    font-family: sans-serif;
+    color: #757575;
+    right: 45%;
+    position: absolute;
+    font-size: larger;
+    color: black;
+}
+
+#score {
+    left: 50px;
+    top: 200px;
+    position: absolute;
+    z-index: 1;
+    float: right;
+    color: white;
+    font-size: 3em;
+}
+
+.key {
+    color: #aaffdd;
+}
+
+#game-over, #game-over-overlay {
+    margin: auto;
+    width: 512px;
+    height: 480px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    display: none;
+}
+
+#game-over-overlay {
+    background-color: black;
+    opacity: .5;
+}
+
+#game-over {
+    height: 200px;
+    text-align: center;
+    color: white;
+}
+
+#game-over h1 {
+    font-size: 3em;
+    font-family: sans-serif;
+}
+#health {
+    position: absolute;
+    z-index: 1;
+}
+#game-over button {
+    font-size: 1.5em;
+}
+#game-start, #game-start-overlay {
+    margin: auto;
+    width: 512px;
+    height: 480px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    display: none;
+}
+
+#game-start-overlay {
+    background-color: black;
+    opacity: .5;
+}
+
+#game-start {
+    height: 200px;
+    text-align: center;
+    color: white;
+}
+
+#game-start h1 {
+    font-size: 3em;
+    font-family: sans-serif;
+}
+
+#game-start button {
+    font-size: 1.5em;
+}
+
+.health-bar {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 200px;
+  height: 20px;
+  padding: 5px;
+  background: #ddd;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  position: relative;
+  left: 700px;
+}
+.bar {
+    bottom: 20px;
+    max-width: 200px;
+  background: #c54;
+  height: 20px;
+  position: relative;
+  left: 700px;
+  
+  transition: width .5s linear;
+}

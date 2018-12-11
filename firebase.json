@@ -1,0 +1,10 @@
+{
+    "hosting": {
+        "public": "newGame",
+        "ignore": [
+            "firebase.json",
+            "**/.*",
+            "**/node_modules/**"
+        ]
+    }
+}
