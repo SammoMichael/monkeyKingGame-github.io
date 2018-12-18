@@ -16,29 +16,14 @@ Can you help the Monkey King save the Flower Fruit Cave from an army of evil mon
 2. The Monkey King will shoot his famous golden-banded pole in both directions automatically
 3. Collect Peaches for powerups and a special spin attack!
 4. Stay away from the giant blue birds!
-```
-Give examples
-```
 
-### Installing
+### Technologies
 
-A step by step series of examples that tell you how to get a development env running
+1. Vanilla JavaScript
+2. HTML5 Canvas sprite animation
 
-Say what the step will be
-
-```
-Give the example
-```
-
-And repeat
-
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
-
-## Running the tests
+# Features
+-------------
 
 Explain how to run the automated tests for this system
 
