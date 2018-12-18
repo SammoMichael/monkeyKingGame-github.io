@@ -29,11 +29,25 @@ Explain how to run the automated tests for this system
 
 ### Break down into end to end tests
 
-Explain what these tests test and why
-
-```
-Give an example
-```
+window.angle = -90
+function render() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    window.angle -= 10; 
+    if(!isGameOver) {
+        if (monkey) {
+            renderEntity(player);
+        } else {
+            player2.pos = player.pos;
+            window.angle -= 10;
+            ctx.save();
+            ctx.translate(player2.pos[0], player.pos[1]);
+            ctx.rotate(window.angle + Math.PI / 2.0);
+            ctx.translate(-1 * [player2.pos[0]], -1 * player2.pos[1]);
+            renderEntity(player2);
+            renderEntity(player);
+            fire.pos = player2.pos;
+            renderEntity(fire);
+            ctx.restore();
 
 ### And coding style tests
 
