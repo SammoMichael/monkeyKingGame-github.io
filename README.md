@@ -4,7 +4,9 @@ Can you help the Monkey King save the Flower Fruit Cave from an army of evil mon
 
 ## [Hurry Up!](https://monkey-king-game.firebaseapp.com)
 
-![Drag Racing](Dragster.jpg)
+![Screenshot](
+        monkeyKingGame-github.io/newGame/img/monkeyscreen3.png
+      )
 
 
 ### Prerequisites
