@@ -10,10 +10,12 @@ Can you help the Monkey King save the Flower Fruit Cave from an army of evil mon
       )
 
 
-### Prerequisites
+### How to play
 
-What things you need to install the software and how to install them
-
+Use trackpad, arrow keys, or w,a,s,d keys to manouever--
+The Monkey King will shoot his famous golden-banded pole in both directions automatically--
+Collect Peaches for powerups and a special spin attack!
+Stay away from the giant blue birds!
 ```
 Give examples
 ```
