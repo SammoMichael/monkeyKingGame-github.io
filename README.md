@@ -29,6 +29,9 @@ Explain how to run the automated tests for this system
 
 ### Break down into end to end tests
 
+```javaScript
+
+
 window.angle = -90
 function render() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -48,6 +51,8 @@ function render() {
             fire.pos = player2.pos;
             renderEntity(fire);
             ctx.restore();
+            
+ ```
 
 ### And coding style tests
 
