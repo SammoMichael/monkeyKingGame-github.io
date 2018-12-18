@@ -24,11 +24,9 @@ Can you help the Monkey King save the Flower Fruit Cave from an army of evil mon
 
 # Features
 -------------
+### Conditional Rendering for Special Spin Attack
 
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
+Consuming peaches enable a special spin attack for a limited duration. In order to render this I used several sprites layered over each other. After consuming a peach it would then activate rendering of a fireball and staff sprite. By saving the contexting, rotating, then restoring I was able to create a spin effect on just one element without rotating the entire canvas.
 ```javaScript
 
 
@@ -54,12 +52,59 @@ function render() {
             
  ```
 
-### And coding style tests
+### Boss AI
 
-Explain what these tests test and why
+AI for the boss was finetuned to make sure it was challenging but not too overwhelming. Constantly chasing the player and shooting fireballs after you while a barrage of other smaller homing enemies make this game difficult while remaining well balanced.
 
-```
-Give an example
+```javaScript
+for (var i=0; i<bosses.length; i++) {
+        if (player) {
+        if (player.pos[0] < bosses[i].pos[0]) {
+            bosses[i].pos[0] -= bossesSpeed * dt;
+            bosses[i].pos[1] -= bossesSpeed * dt;
+        } else {
+            bosses[i].pos[0] += bossesSpeed * dt;
+        }
+        if (player.pos[1] < bosses[i].pos[1]) {
+            bosses[i].pos[1] -= bossesSpeed * dt;
+        } else {
+            bosses[i].pos[1] += bossesSpeed * dt;
+        }
+    } else {
+        bosses[i].pos[0] -= bossesSpeed * dt;
+    }
+        const rate = 25;
+        if ((Math.floor(Math.random() * rate) % rate) === 1) {
+        if (player.pos[0] < bosses[i].pos[0]) {
+            fireballs.push({
+                pos: [bosses[i].pos[0], bosses[i].pos[1]],
+                       dir: 'back',
+            sprite: new Sprite('img/fire1.png', [0, 0], [45, 65], 4, [0, 1, 2, 3, 4]) });
+            bosses[i].pos[1] -= bossesSpeed * dt;
+            bosses[i].pos[0] -= bossesSpeed * dt;
+        } else {
+            fireballs.push({
+                pos: [bosses[i].pos[0], bosses[i].pos[1]],
+                dir: 'forward',
+                sprite: new Sprite('img/fire1.png', [0, 0], [45, 65], 4, [0, 1, 2, 3, 4])
+            });
+        }
+        if (player.pos[1] > bosses[i].pos[1]) {
+            fireballs.push({
+                pos: [bosses[i].pos[0], bosses[i].pos[1]],
+                dir: 'down',
+                sprite: new Sprite('img/fire1.png', [0, 0], [45, 65], 4, [0, 1, 2, 3, 4])
+            });
+        } else {
+            fireballs.push({
+                pos: [bosses[i].pos[0], bosses[i].pos[1]],
+                dir: 'up',
+                sprite: new Sprite('img/fire1.png', [0, 0], [45, 65], 4, [0, 1, 2, 3, 4])
+            });
+        } 
+    } 
+        bosses[i].sprite.update(dt);
+    }
 ```
 
 ## Deployment
