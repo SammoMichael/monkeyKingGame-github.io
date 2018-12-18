@@ -2,9 +2,10 @@
 
 Can you help the Monkey King save the Flower Fruit Cave from an army of evil monkeys?
 
-## Hurry Up!(https://monkey-king-game.firebaseapp.com)
+## [Hurry Up!](https://monkey-king-game.firebaseapp.com)
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+![Drag Racing](Dragster.jpg)
+
 
 ### Prerequisites
 
