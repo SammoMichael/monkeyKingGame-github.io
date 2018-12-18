@@ -12,8 +12,8 @@ Can you help the Monkey King save the Flower Fruit Cave from an army of evil mon
 
 ### How to play
 
-Use trackpad, arrow keys, or w,a,s,d keys to manouever--
-The Monkey King will shoot his famous golden-banded pole in both directions automatically--
+Use trackpad, arrow keys, or w,a,s,d keys to manouever
+The Monkey King will shoot his famous golden-banded pole in both directions automatically
 Collect Peaches for powerups and a special spin attack!
 Stay away from the giant blue birds!
 ```
