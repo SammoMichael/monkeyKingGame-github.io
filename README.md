@@ -2,7 +2,7 @@
 
 Can you help the Monkey King save the Flower Fruit Cave from an army of evil monkeys?
 
-## [Hurry Up!](https://monkey-king-game.firebaseapp.com)
+## [Hurry Up!](https://monkey-king-game.firebaseapp.com)  [mascot](newGame/img/Webp.net-gifmaker.gif)
 
 ![Screenshot](
        newGame/img/monkeyscreen3.png
