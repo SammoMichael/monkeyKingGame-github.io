@@ -49,12 +49,12 @@ function render() {
             fire.pos = player2.pos;
             renderEntity(fire);
             ctx.restore();
-            
+            }
  ```
 
 ### Boss AI
 
-AI for the boss was finetuned to make sure it was challenging but not too overwhelming. Constantly chasing the player and shooting fireballs after you while a barrage of other smaller homing enemies make this game difficult while remaining well balanced.
+AI for the boss was fine-tuned to make sure it was challenging but not too overwhelming. Constantly chasing the player and shooting fireballs after you while a barrage of other smaller homing enemies make this game difficult while remaining well balanced.
 
 ```javaScript
 for (var i=0; i<bosses.length; i++) {
