@@ -1,146 +1,85 @@
 
 (function() {
-
     var pressedKeys = {};
 
-    function setKey(event, status) {
-        console.log(event);
-        console.log(status);
-        // if window.touch = true
-        // console.log(PointerEvent.MovementX);
-        // console.log(PointerEvent.MovementX);
-        // console.log(PointerEvent.type);
-        // console.log(event.type);
-        // console.log(event.MovementX);
+    // Function to handle keyboard events
+    function handleKeyEvent(event, status) {
         var code = event.keyCode;
-        // var pointerX = event.layerX;
-        // var pointerY = event.layerY;
-        // var playerX = window.player.sprite.pos[0];
-        // var playerY = window.player.sprite.pos[1];
         var key;
-        // console.log(window.player.sprite.pos);
-        // console.log(event.layerX);
-        // console.log(event.layerY);
-        
-        if (event.type === "pointerdown") {
-            
-        if (event.path[0].id === "circle") {
-            key = 'SPACE';
-            status = true;
-            console.log('SPACE');
-            console.log(event.path);
-            console.log(event.path.id);
-            console.log(key);
 
-        }
-        if (event.path[0].id === "circle2") {
-            key = 'UP';
-            status = true;
-            console.log('UP');
-            console.log(key);
-
-            console.log(event.path);
-        }
-        if (event.path[0].id === "circle3") {
-            status = true;
-            key = 'RIGHT';
-            console.log('RIGHT');
-            console.log(key);
-
-            // console.log('event');
-        }
-        if (event.path[0].id === "circle4") {
-            status = true;
-            key = 'LEFT';
-            console.log('LEFT');
-            // console.log('event');
-        }
-        if (event.path[0].id === "circle5") {
-            status = true;
-            key = 'DOWN';
-            console.log('DOWN');
-            // console.log('event');
-        }
-    }
-
-        // if (pointerX > playerX) {
-        //     key = 'RIGHT';
-        //     console.log('RIGHT');
-        // } 
-        // if (pointerX < playerX) {
-        //     key = 'LEFT';
-        //     console.log('LEFT');
-        // }
-        // if (pointerY > playerY) {
-        //     key = 'UP';
-        //     console.log('UP');
-        // } else if (pointerY < playerY) {
-        //     key = 'DOWN';
-        //     console.log('DOWN');
-        // } 
-        // console.log(pressedKeys);
-        
-        // if (event.PointerEvent.type === "pointerdown") {
-        //     key = 'SPACE';
-        // }
         switch (code) {
-        case 32:
-            key = 'SPACE'; break;
-        case 37:
-            key = 'LEFT'; break;
-        case 38:
-            key = 'UP'; break;
-        case 39:
-            key = 'RIGHT'; break;
-        case 40:
-            key = 'DOWN'; break;
-        default:
-            // Convert ASCII codes to letters
-            key = String.fromCharCode(code);
+            case 32: key = 'SPACE'; break;
+            case 37: key = 'LEFT'; break;
+            case 38: key = 'UP'; break;
+            case 39: key = 'RIGHT'; break;
+            case 40: key = 'DOWN'; break;
+            default: key = String.fromCharCode(code); // Convert ASCII codes to letters
         }
-        // const fire = document.getElementById("joystick");
-
-        //  fire.addEventListener('touchstart', (e) => { 
-        //     console.log(e);
-        //     key = 'SPACE'; 
-        // });
-        // fire.addEventListener('pointerdown', (e) => { 
-        //     console.log(e);
-        //     key = 'SPACE'; 
-        // });
         pressedKeys[key] = status;
-        console.log(pressedKeys[key]);
-        console.log(key);
     }
 
-    document.addEventListener('pointerdown', (e) => {
-        setKey(e, true);
-    });
-    document.addEventListener('pointerup', (e) => {
-        pressedKeys = {};
-    });
-    document.addEventListener('touchstart', (e) => {
-        setKey(e, true);
-    });
-    document.addEventListener('touchend', (e) => {
-        pressedKeys = {};
-    });
+    // Function to handle touch control events
+    function handleControlTouchEvent(elementId, status) {
+        var key;
+        switch (elementId) {
+            case 'circle': key = 'SPACE'; break;
+            case 'circle2': key = 'UP'; break;
+            case 'circle3': key = 'DOWN'; break; // Corrected mapping
+            case 'circle4': key = 'LEFT'; break;
+            case 'circle5': key = 'RIGHT'; break; // Corrected mapping
+            default: return; // Not a control element
+        }
+        pressedKeys[key] = status;
+        // console.log(`Touch Control: ${elementId}, Key: ${key}, Status: ${status}`);
+    }
 
-    // document.addEventListener('pointermove', (e) => {
-    //     setKey(e, true);
-    // });
-
-
+    // Setup keyboard listeners
+    document.addEventListener('keydown', function(e) {
+        handleKeyEvent(e, true);
+    });
     document.addEventListener('keyup', function(e) {
-        setKey(e, false);
+        handleKeyEvent(e, false);
     });
+
+    // Setup touch listeners if window.touch is true (set in app.js)
+    // We need to wait for the DOM to be ready to get elements,
+    // or ensure input.js is loaded after the elements are defined.
+    // For simplicity, assuming elements are available when this script runs or check window.touch later.
+
+    // Delay setup of touch listeners until DOM is fully loaded
+    document.addEventListener('DOMContentLoaded', function () {
+        if (window.touch) { // window.touch is set in app.js
+            const controlIds = ['circle', 'circle2', 'circle3', 'circle4', 'circle5'];
+            controlIds.forEach(id => {
+                const element = document.getElementById(id);
+                if (element) {
+                    element.addEventListener('touchstart', function(e) {
+                        e.preventDefault();
+                        handleControlTouchEvent(e.currentTarget.id, true);
+                    }, { passive: false });
+
+                    element.addEventListener('touchend', function(e) {
+                        e.preventDefault();
+                        handleControlTouchEvent(e.currentTarget.id, false);
+                    }, { passive: false });
+
+                    // Optional: Add pointer event listeners for touch for broader compatibility if needed
+                    // but be careful about double handling if both touch and pointer events fire.
+                    // For now, sticking to touchstart/touchend for clarity on touch devices.
+                }
+            });
+        }
+    });
+
 
     window.addEventListener('blur', function() {
-        pressedKeys = {};
+        pressedKeys = {}; // Reset all keys on blur
     });
 
     window.input = {
-        isDown: function (key) {
+        isDown: function(key) {
+            // Ensure key is uppercase as game logic might use uppercase (e.g. input.isDown('UP'))
+            // and our pressedKeys stores uppercase from keyboard, and now from touch too.
             return pressedKeys[key.toUpperCase()];
         }
     };
