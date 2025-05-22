@@ -1,5 +1,6 @@
 {
   "projects": {
-    "touch": "monkey-king-game"
+    "touch": "monkey-king-game",
+    "default": "monkey-king-game"
   }
 }
