@@ -6,6 +6,11 @@ else {
     window.touch = false;
     console.log("your device is NOT a touch device");
 }
+
+if (window.touch) {
+    document.body.classList.add('touch-controls-active');
+}
+
 document.getElementById('game-start').style.display = 'block';
 // var hBar = $('.health-bar')
 // var bar = hBar.find('.bar')
@@ -31,26 +36,72 @@ var requestAnimFrame = (function (){
 var down = document.getElementById("circle5");
 var bar = document.getElementById('bar').style.width;
 var barValue = document.getElementById('bar').style.width.slice(0, -1);
-var canvas = document.createElement("canvas");
-var ctx = canvas.getContext("2d");
-canvas.width = 1400;
-canvas.height = 800;
-document.body.appendChild(canvas);
-    const video = () => {
-    var canvas = document.getElementById('canvas');
-    var ctx = canvas.getContext('2d');
-    var video = document.getElementById('video');
 
-    video.addEventListener('play', function () {
-        var $this = this; //cache
-        (function loop() {
-            if (!$this.paused && !$this.ended) {
-                ctx.drawImage($this, 0, 0);
-                setTimeout(loop, 1000 / 30); // drawing at 30fps
-            }
-        })();
-    }, 0);
+// Get existing Game Canvas from HTML
+var canvas = document.getElementById('gameCanvas');
+var ctx = canvas.getContext("2d");
+// Original hardcoded dimensions: canvas.width = 1400; canvas.height = 800;
+const TARGET_ASPECT_RATIO = 1400 / 800;
+
+function resizeGameCanvas() {
+    var windowWidth = window.innerWidth;
+    var effectiveWindowHeight = window.innerHeight;
+
+    // Adjust effective height if touch controls are active and visible
+    if (window.touch && document.body.classList.contains('touch-controls-active')) {
+        // Determine control height based on screen width (matches CSS media query for button sizes)
+        var controlHeightReserved = (windowWidth <= 600) ? 120 : 220; // Approx button height + bottom offset
+        effectiveWindowHeight -= controlHeightReserved;
+    }
+
+    var windowAspectRatio = windowWidth / effectiveWindowHeight;
+
+    var newCanvasWidth;
+    var newCanvasHeight;
+
+    if (windowAspectRatio > TARGET_ASPECT_RATIO) {
+        newCanvasHeight = effectiveWindowHeight;
+        newCanvasWidth = newCanvasHeight * TARGET_ASPECT_RATIO;
+    } else {
+        newCanvasWidth = windowWidth;
+        newCanvasHeight = newCanvasWidth / TARGET_ASPECT_RATIO;
+    }
+
+    // Ensure canvas dimensions are not negative if reserved space is too large
+    canvas.width = Math.max(10, newCanvasWidth); // Minimum width of 10px
+    canvas.height = Math.max(10, newCanvasHeight); // Minimum height of 10px
+
+    // The existing CSS for 'canvas' in app.css (absolute positioning, margin: auto)
+    // should center the canvas element correctly after its width/height attributes are set.
 }
+
+// Initial resize
+resizeGameCanvas();
+
+// Add resize event listener
+window.addEventListener('resize', resizeGameCanvas);
+
+    const video = () => {
+    // This function refers to a separate canvas with id 'canvas', not 'gameCanvas'.
+    // We leave this as is, assuming it's for a different purpose or experimental.
+    var videoCanvas = document.getElementById('canvas'); // Original line, might be null if no element with id="canvas"
+    if (videoCanvas) { // Check if the canvas element exists
+        var videoCtx = videoCanvas.getContext('2d');
+        var videoElement = document.getElementById('video');
+
+        videoElement.addEventListener('play', function () {
+            var $this = this; //cache
+            (function loop() {
+                if (!$this.paused && !$this.ended) {
+                    videoCtx.drawImage($this, 0, 0, videoCanvas.width, videoCanvas.height); // Draw to fit the videoCanvas
+                    setTimeout(loop, 1000 / 30); // drawing at 30fps
+                }
+            })();
+        }, 0);
+    }
+}
+// Call the video function if it's intended to run
+// video(); // Uncomment if this is supposed to be active. For now, focus on game canvas.
 
 var lastTime;
 function main() {
